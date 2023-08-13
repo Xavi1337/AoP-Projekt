@@ -9,9 +9,14 @@ import java.awt.geom.Ellipse2D;
 
 import static java.awt.Color.yellow;
 
-public class Player4 extends Figuren implements KeyListener {
+public class Player4 extends Figurenposition implements KeyListener {
+
+
+
     public Player4(Game game, double centerX, double centerY, double radius) {
         super(game, centerX, centerY, radius, Color.RED);
+
+
     }
 
     @Override

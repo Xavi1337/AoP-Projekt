@@ -3,32 +3,27 @@ package Game;
 import java.awt.Graphics2D;
 
 import Game.Objects.GameObject;
-import Game.Objects.Tile.Air;
-import Game.Objects.Tile.Field;
-import Game.Objects.Tile.StartBlue;
-import Game.Objects.Tile.StartGreen;
-import Game.Objects.Tile.StartRed;
-import Game.Objects.Tile.StartYellow;
-import Game.Objects.Tile.Tile;
+import Game.Objects.Tile.*;
 
 public class GameMap extends GameObject{
 
     private static final int[][] DEFAULT_MAP ={
-            {4, 4, 0, 0, 1, 1, 3, 0, 0, 3, 3},
-            {4, 4, 0, 0, 1, 3, 1, 0, 0, 3, 3},
-            {0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0},
-            {0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0},
-            {4, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1},
-            {1, 4, 4, 4, 4, 0, 2, 2, 2, 2, 1},
-            {1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 2},
-            {0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0},
-            {0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0},
-            {5, 5, 0, 0, 1, 5, 1, 0, 0, 2, 2},
-            {5, 5, 0, 0, 5, 1, 1, 0, 0, 2, 2},
+            {100, 100, 0, 0, 9, 10, 11, 0, 0, 101, 101},
+            {100, 100, 0, 0, 8, 101, 12, 0, 0, 101, 101},
+            {0, 0, 0, 0, 7, 101, 13, 0, 0, 0, 0},
+            {0, 0, 0, 0, 6, 101, 14, 0, 0, 0, 0},
+            {1, 2, 3, 4, 5, 101, 15, 16, 17, 18, 19},
+            {40, 100, 100, 100, 100, 0, 103, 103, 103, 103, 20},
+            {39, 38, 37, 36, 35, 102, 25, 24, 23, 22, 21},
+            {0, 0, 0, 0, 34, 102, 26, 0, 0, 0, 0},
+            {0, 0, 0, 0, 33, 102, 27, 0, 0, 0, 0},
+            {102, 102, 0, 0, 32, 102, 28, 0, 0, 103, 103},
+            {102, 102, 0, 0, 31, 30, 29, 0, 0, 103, 103},
     };
-    private final int tileSize;
+    public final int tileSize;
 
     private final Tile[][] tiles;
+
 
 
     public GameMap (int tileSize) {
@@ -39,23 +34,32 @@ public class GameMap extends GameObject{
             for(int x = 0; x < getWidth(); x++) {
                 int tileId = DEFAULT_MAP[y][x];
 
-                if(tileId == 1) {
+                if (tileId >= 1 & tileId <= 40) {
                     tiles[x][y] = new Field(x, y);
-                }else if (tileId == 0) {
+                } else if (tileId == 0) {
                     tiles[x][y] = new Air(x, y);
-                }else if (tileId == 3) {
+                } else if (tileId == 100) {
                     tiles[x][y] = new StartGreen(x, y);
-                }else if( tileId == 4) {
+                } else if (tileId == 101) {
                     tiles[x][y] = new StartYellow(x, y);
-                }else if (tileId == 5) {
+                } else if (tileId == 102) {
                     tiles[x][y] = new StartBlue(x, y);
-                }else if (tileId == 2) {
+                } else if (tileId == 103) {
                     tiles[x][y] = new StartRed(x, y);
                 }
 
             }
         }
+        tiles[0][0] = new SpielerRot(0,0);
+        tiles[0][1] = new SpielerRot(0,1);
+        tiles[1][0] = new SpielerRot(1,0);
+        tiles[1][1] = new SpielerRot(1,1);
+
     }
+
+
+
+
     public int getWidth() {
         return tiles[0].length;
     }
@@ -87,6 +91,8 @@ public class GameMap extends GameObject{
     public void setTile(int x, int y, Tile tile) {
         tiles[y][x] = tile;
     }
+
+
 
 }
 

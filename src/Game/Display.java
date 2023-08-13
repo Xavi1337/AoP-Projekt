@@ -12,6 +12,7 @@ public class Display extends JPanel{
         super();
         this.game = game;
         game.add(this);
+
     }
 
 
