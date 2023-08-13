@@ -20,9 +20,10 @@ public class GameMap extends GameObject{
             {102, 102, 0, 0, 32, 102, 28, 0, 0, 103, 103},
             {102, 102, 0, 0, 31, 30, 29, 0, 0, 103, 103},
     };
+
     public final int tileSize;
 
-    private final Tile[][] tiles;
+    private static Tile[][] tiles;
 
 
 
@@ -55,9 +56,9 @@ public class GameMap extends GameObject{
         tiles[1][0] = new SpielerRot(1,0);
         tiles[1][1] = new SpielerRot(1,1);
 
+
+
     }
-
-
 
 
     public int getWidth() {
@@ -88,7 +89,7 @@ public class GameMap extends GameObject{
         return tiles[y][x];
     }
 
-    public void setTile(int x, int y, Tile tile) {
+    public static void setTile(int x, int y, Tile tile) {
         tiles[y][x] = tile;
     }
 

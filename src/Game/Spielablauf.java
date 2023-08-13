@@ -1,10 +1,9 @@
 package Game;
+
+
 import Game.Objects.Tile.SpielerRot;
 
-
-class Spielablauf {
-
-
+class Spielablauf  {
 
 
 
@@ -19,6 +18,6 @@ class Spielablauf {
 
     public void spielstart() {
 
-        /*gameMap.setTile(4, 0, new SpielerRot(4, 0));*/
+        GameMap.setTile(0, 5, new SpielerRot(0, 5));
     }
 }

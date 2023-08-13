@@ -22,7 +22,7 @@ public class Game extends JFrame{
     private final Player2 player2;
     private final Player3 player3;
     private final Player4 player4;
-    int wuerfelergebnis;
+
 
     Color yellowboard = new Color(204, 204, 0);
 
