@@ -19,6 +19,6 @@ class Spielablauf {
 
     public void spielstart() {
 
-        gameMap.setTile(4, 0, new SpielerRot(4, 0));
+        /*gameMap.setTile(4, 0, new SpielerRot(4, 0));*/
     }
 }
