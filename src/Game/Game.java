@@ -11,6 +11,7 @@ import Game.GameMap;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Game.Objects.Tile.SpielerRot;
+import Game.Objects.Tile.Tile;
 
 
 public class Game extends JFrame{
@@ -91,6 +92,7 @@ public class Game extends JFrame{
         setVisible(true);
 
     }
+   
 
     public int rollDice() {
         Random random = new Random();
