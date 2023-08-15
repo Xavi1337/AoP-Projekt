@@ -11,6 +11,7 @@ class Spielablauf  {
         if (diceRoll == 6) {
             System.out.println("Glückwunsch! Eine 6 wurde geworfen. Das Spiel beginnt.");
             spielstart();
+
         } else {
             System.out.println("Sie haben eine " + diceRoll + " gewürfelt!");
         }
@@ -18,6 +19,10 @@ class Spielablauf  {
 
     public void spielstart() {
 
-        GameMap.setTile(0, 5, new SpielerRot(0, 5));
+        GameMap.setTile(0, 4, new SpielerRot(0, 4));
     }
+
+
+
 }
+
