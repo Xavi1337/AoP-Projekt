@@ -13,8 +13,8 @@ public class Player3 extends Figurenposition implements KeyListener {
 
 
 
-    public Player3(Game game, double centerX, double centerY, double radius) {
-        super(game, centerX, centerY, radius, Color.BLUE);
+    public Player3(double centerX, double centerY, double radius) {
+        super(centerX, centerY, radius, Color.BLUE);
 
 
     }

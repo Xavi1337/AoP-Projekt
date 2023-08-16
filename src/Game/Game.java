@@ -1,10 +1,7 @@
 package Game;
 
-import java.util.Random;
 import javax.swing.*;
 import java.util.Scanner;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Game extends JFrame {
 
@@ -12,7 +9,7 @@ public class Game extends JFrame {
 
     public Game() {
         super("Game");
-        display = new Display(this);
+        display = new Display();
         Scanner scanner = new Scanner(System.in);
         int spieleranzahl;
 
@@ -38,24 +35,11 @@ public class Game extends JFrame {
 
         this.add(display);
 
-        b1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int diceRoll = rollDice();
-                System.out.println(diceRoll);
-            }
-        });
-
         setSize(670,700);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-    }
-
-    public int rollDice() {
-        Random random = new Random();
-        return random.nextInt(6) + 1;
     }
 
     public static void main(String[] args) {

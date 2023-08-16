@@ -16,13 +16,13 @@ public class Display extends JPanel{
     private final Player4 player4;
     private final Color yellowboard = new Color(204, 204, 0);
 
-    public Display(Game game) {
+    public Display() {
 
         map = new GameMap(50);
-        player1 = new Player1(game, 8.5, 12.5, 0.375);
-        player2 = new Player2(game, 7.5, 12.5, 0.375);
-        player3 = new Player3(game, 6.5, 12.5, 0.375);
-        player4 = new Player4(game, 5.5, 12.5, 0.375);
+        player1 = new Player1(8.5, 12.5, 0.375);
+        player2 = new Player2(7.5, 12.5, 0.375);
+        player3 = new Player3(6.5, 12.5, 0.375);
+        player4 = new Player4(5.5, 12.5, 0.375);
     }
 
     public void paint(Graphics g) {

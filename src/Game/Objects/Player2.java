@@ -12,8 +12,8 @@ import static java.awt.Color.yellow;
 public class Player2 extends Figurenposition implements KeyListener {
 
 
-    public Player2(Game game, double centerX, double centerY, double radius) {
-        super(game, centerX, centerY, radius, Color.GREEN);
+    public Player2(double centerX, double centerY, double radius) {
+        super(centerX, centerY, radius, Color.GREEN);
 
     }
 

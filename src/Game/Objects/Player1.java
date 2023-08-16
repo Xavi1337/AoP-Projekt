@@ -10,17 +10,11 @@ import java.awt.geom.Ellipse2D;
 public class Player1 extends Figurenposition implements KeyListener {
 
 
+    public Player1(double centerX, double centerY, double radius) {
 
+        super(centerX, centerY, radius, Color.YELLOW);
 
-    public Player1(Game game, double centerX, double centerY, double radius) {
-
-        super(game, centerX, centerY, radius, Color.YELLOW);
-
-
-
-        }
-
-
+    }
 
     @Override
     public void render(Graphics2D g, int tileSize) {
@@ -32,8 +26,6 @@ public class Player1 extends Figurenposition implements KeyListener {
         g.setColor(color);
         g.fill(new Ellipse2D.Double(centerXOnScreen - radiusOnScreen, centerYOnScreen - radiusOnScreen, diameterOnScreen, diameterOnScreen));
     }
-
-
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -49,4 +41,5 @@ public class Player1 extends Figurenposition implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
 }

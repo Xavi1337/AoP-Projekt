@@ -1,21 +1,20 @@
 package Game.Objects;
 
-import Game.Game;
+import Game.Objects.Tile.Tile;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Ellipse2D;
 
-import static java.awt.Color.yellow;
+public class Player extends Figurenposition implements KeyListener {
 
-public class Player4 extends Figurenposition implements KeyListener {
+    private String state = "Wait";
+    private Tile[] steine;
 
+    public Player(double centerX, double centerY, double radius) {
 
-
-    public Player4(double centerX, double centerY, double radius) {
-        super(centerX, centerY, radius, Color.RED);
-
+        super(centerX, centerY, radius, Color.YELLOW);
 
     }
 
@@ -43,5 +42,13 @@ public class Player4 extends Figurenposition implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
