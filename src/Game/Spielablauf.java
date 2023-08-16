@@ -12,66 +12,130 @@ class Spielablauf  {
     public Spielablauf(GameMap map) {
         this.map = map;
         for (int i = 0; i < spieleranzahl; i++) {
-
             if (i == 0) {
-                Integer[][] wegGruen = {{4, 0}, {4, 1}, {4, 2}, {4, 3}, {4, 4},
-                                        {3, 4}, {2, 4}, {1, 4}, {0, 4},
-                                        {0, 5}, {0, 6},
-                                        {1, 6}, {2, 6}, {3, 6}, {4, 6},
-                                        {4, 7}, {4, 8}, {4, 9}, {4, 10},
-                                        {5, 10}, {6, 10},
-                                        {6, 9}, {6, 8}, {6, 7}, {6, 6},
-                                        {7, 6}, {8, 6}, {9, 6}, {10, 6},
-                                        {10, 5}, {10, 4},
-                                        {9, 4}, {8, 4}, {7, 4}, {6, 4},
-                                        {6, 3}, {6, 2}, {6, 1}, {6, 0},
-                                        {5, 0}};
-                spielers[i] = new Player(wegGruen);
+                Integer[][] weg =      {{4, 0}, //Start Gruen
+                                        {4, 1}, {4, 2}, {4, 3},
+                                        {4, 4},
+                                        {3, 4}, {2, 4}, {1, 4},
+                                        {0, 4},
+                                        {0, 5},
+
+                                        {0, 6}, //Start Gelb
+                                        {1, 6}, {2, 6}, {3, 6},
+                                        {4, 6},
+                                        {4, 7}, {4, 8}, {4, 9},
+                                        {4, 10},
+                                        {5, 10},
+
+                                        {6, 10}, //Start Blau
+                                        {6, 9}, {6, 8}, {6, 7},
+                                        {6, 6},
+                                        {7, 6}, {8, 6}, {9, 6},
+                                        {10, 6},
+                                        {10, 5},
+
+                                        {10, 4}, //Start Rot
+                                        {9, 4}, {8, 4}, {7, 4},
+                                        {6, 4},
+                                        {6, 3}, {6, 2}, {6, 1},
+                                        {6, 0},
+                                        {5, 0},
+
+                                        {5, 1}, {5, 2}, {5, 3}, {5, 4}}; //Ziel Gruen
+                spielers[i] = new Player(weg);
             } else if (i == 1) {
-                Integer[][] wegGruen = {{4, 0}, {4, 1}, {4, 2}, {4, 3}, {4, 4},
-                                        {3, 4}, {2, 4}, {1, 4}, {0, 4},
-                                        {0, 5}, {0, 6},
-                                        {1, 6}, {2, 6}, {3, 6}, {4, 6},
-                                        {4, 7}, {4, 8}, {4, 9}, {4, 10},
-                                        {5, 10}, {6, 10},
-                                        {6, 9}, {6, 8}, {6, 7}, {6, 6},
-                                        {7, 6}, {8, 6}, {9, 6}, {10, 6},
-                                        {10, 5}, {10, 4},
-                                        {9, 4}, {8, 4}, {7, 4}, {6, 4},
-                                        {6, 3}, {6, 2}, {6, 1}, {6, 0},
-                                        {5, 0}};
-                spielers[i] = new Player(wegGruen);
-                //Repeat
+                Integer[][] weg =      {{0, 6}, //Start Gelb
+                                        {1, 6}, {2, 6}, {3, 6},
+                                        {4, 6},
+                                        {4, 7}, {4, 8}, {4, 9},
+                                        {4, 10},
+                                        {5, 10},
+
+                                        {6, 10}, //Start Blau
+                                        {6, 9}, {6, 8}, {6, 7},
+                                        {6, 6},
+                                        {7, 6}, {8, 6}, {9, 6},
+                                        {10, 6},
+                                        {10, 5},
+
+                                        {10, 4}, //Start Rot
+                                        {9, 4}, {8, 4}, {7, 4},
+                                        {6, 4},
+                                        {6, 3}, {6, 2}, {6, 1},
+                                        {6, 0},
+                                        {5, 0},
+
+                                        {4, 0}, //Start Gruen
+                                        {4, 1}, {4, 2}, {4, 3},
+                                        {4, 4},
+                                        {3, 4}, {2, 4}, {1, 4},
+                                        {0, 4},
+                                        {0, 5},
+
+                                        {1, 5}, {2, 5}, {3, 5}, {4, 5}}; //Ziel Gelb
+                spielers[i] = new Player(weg);
             } else if (i == 2) {
-                Integer[][] wegGruen = {{4, 0}, {4, 1}, {4, 2}, {4, 3}, {4, 4},
-                                        {3, 4}, {2, 4}, {1, 4}, {0, 4},
-                                        {0, 5}, {0, 6},
-                                        {1, 6}, {2, 6}, {3, 6}, {4, 6},
-                                        {4, 7}, {4, 8}, {4, 9}, {4, 10},
-                                        {5, 10}, {6, 10},
-                                        {6, 9}, {6, 8}, {6, 7}, {6, 6},
-                                        {7, 6}, {8, 6}, {9, 6}, {10, 6},
-                                        {10, 5}, {10, 4},
-                                        {9, 4}, {8, 4}, {7, 4}, {6, 4},
-                                        {6, 3}, {6, 2}, {6, 1}, {6, 0},
-                                        {5, 0}};
-                spielers[i] = new Player(wegGruen);
-                //Repeat
+                Integer[][] weg =      {{6, 10}, //Start Blau
+                                        {6, 9}, {6, 8}, {6, 7},
+                                        {6, 6},
+                                        {7, 6}, {8, 6}, {9, 6},
+                                        {10, 6},
+                                        {10, 5},
+
+                                        {10, 4}, //Start Rot
+                                        {9, 4}, {8, 4}, {7, 4},
+                                        {6, 4},
+                                        {6, 3}, {6, 2}, {6, 1},
+                                        {6, 0},
+                                        {5, 0},
+
+                                        {4, 0}, //Start Gruen
+                                        {4, 1}, {4, 2}, {4, 3},
+                                        {4, 4},
+                                        {3, 4}, {2, 4}, {1, 4},
+                                        {0, 4},
+                                        {0, 5},
+
+                                        {0, 6}, //Start Gelb
+                                        {1, 6}, {2, 6}, {3, 6},
+                                        {4, 6},
+                                        {4, 7}, {4, 8}, {4, 9},
+                                        {4, 10},
+                                        {5, 10},
+
+                                        {5, 9}, {5, 8}, {5, 7}, {5, 6}}; //Ziel Blau
+                spielers[i] = new Player(weg);
             } else if (i == 3) {
-                Integer[][] wegGruen = {{4, 0}, {4, 1}, {4, 2}, {4, 3}, {4, 4},
-                                        {3, 4}, {2, 4}, {1, 4}, {0, 4},
-                                        {0, 5}, {0, 6},
-                                        {1, 6}, {2, 6}, {3, 6}, {4, 6},
-                                        {4, 7}, {4, 8}, {4, 9}, {4, 10},
-                                        {5, 10}, {6, 10},
-                                        {6, 9}, {6, 8}, {6, 7}, {6, 6},
-                                        {7, 6}, {8, 6}, {9, 6}, {10, 6},
-                                        {10, 5}, {10, 4},
-                                        {9, 4}, {8, 4}, {7, 4}, {6, 4},
-                                        {6, 3}, {6, 2}, {6, 1}, {6, 0},
-                                        {5, 0}};
-                spielers[i] = new Player(wegGruen);
-                //Repeat
+                Integer[][] weg =      {{10, 4}, //Start Rot
+                                        {9, 4}, {8, 4}, {7, 4},
+                                        {6, 4},
+                                        {6, 3}, {6, 2}, {6, 1},
+                                        {6, 0},
+                                        {5, 0},
+
+                                        {4, 0}, //Start Gruen
+                                        {4, 1}, {4, 2}, {4, 3},
+                                        {4, 4},
+                                        {3, 4}, {2, 4}, {1, 4},
+                                        {0, 4},
+                                        {0, 5},
+
+                                        {0, 6}, //Start Gelb
+                                        {1, 6}, {2, 6}, {3, 6},
+                                        {4, 6},
+                                        {4, 7}, {4, 8}, {4, 9},
+                                        {4, 10},
+                                        {5, 10},
+
+                                        {6, 10}, //Start Blau
+                                        {6, 9}, {6, 8}, {6, 7},
+                                        {6, 6},
+                                        {7, 6}, {8, 6}, {9, 6},
+                                        {10, 6},
+                                        {10, 5},
+
+                                        {9, 5}, {8, 5}, {7, 5}, {6, 5}}; //Ziel Rot
+                spielers[i] = new Player(weg);
             }
         }
     }
@@ -134,13 +198,40 @@ class Spielablauf  {
     }
 
     public void spielzug(int diceRoll) {
-        System.out.println(spielers[runde%4].getSteine());
-        int newPos = spielers[runde%4].getSteine().get(0).getPos() + diceRoll;
-        Tile spielerGruen = new SpielerGruen(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
-        spielerGruen.setPos(newPos);
-        spielers[runde%4].getSteine().remove(0);
-        spielers[runde%4].getSteine().add(0, spielerGruen);
-        map.setTile(spielerGruen);
+        int pos = spielers[runde%4].getSteine().get(0).getPos();
+        Tile field = new Field(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]);
+        map.setTile(field);
+        int newPos = pos + diceRoll;
+        switch (runde % 4) {
+            case 0:
+                Tile spielerGruen = new SpielerGruen(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
+                spielerGruen.setPos(newPos);
+                spielers[runde%4].getSteine().remove(0);
+                spielers[runde%4].getSteine().add(0, spielerGruen);
+                map.setTile(spielerGruen);
+                break;
+            case 1:
+                Tile spielerGelb = new SpielerGelb(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
+                spielerGelb.setPos(newPos);
+                spielers[runde%4].getSteine().remove(0);
+                spielers[runde%4].getSteine().add(0, spielerGelb);
+                map.setTile(spielerGelb);
+                break;
+            case 2:
+                Tile spielerBlau = new SpielerBlau(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
+                spielerBlau.setPos(newPos);
+                spielers[runde%4].getSteine().remove(0);
+                spielers[runde%4].getSteine().add(0, spielerBlau);
+                map.setTile(spielerBlau);
+                break;
+            case 3:
+                Tile spielerRot = new SpielerRot(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
+                spielerRot.setPos(newPos);
+                spielers[runde%4].getSteine().remove(0);
+                spielers[runde%4].getSteine().add(0, spielerRot);
+                map.setTile(spielerRot);
+                break;
+        }
     }
 
     public void spielstart() {
@@ -170,8 +261,6 @@ class Spielablauf  {
                 map.setTile(spielerRot);
                 break;
         }
-
-
     }
 }
 
