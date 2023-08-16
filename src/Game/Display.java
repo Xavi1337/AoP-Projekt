@@ -9,6 +9,10 @@ import javax.swing.*;
 
 public class Display extends JPanel{
 
+    public GameMap getMap() {
+        return map;
+    }
+
     private final GameMap map;
     private final Player1 player1;
     private final Player2 player2;

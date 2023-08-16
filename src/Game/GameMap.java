@@ -6,7 +6,11 @@ import Game.Objects.Tile.*;
 
 public class GameMap extends GameObject{
 
-    private static final int[][] DEFAULT_MAP ={
+    public int[][] getDEFAULT_MAP() {
+        return DEFAULT_MAP;
+    }
+
+    private final int[][] DEFAULT_MAP ={
         {100, 100,   0,   0,   9,  10,  11,   0,   0, 102, 102},
         {100, 100,   0,   0,   8, 103,  12,   0,   0, 102, 102},
         {  0,   0,   0,   0,   7, 103,  13,   0,   0,   0,   0},
@@ -28,8 +32,8 @@ public class GameMap extends GameObject{
         this.tileSize = tileSize;
         tiles = new Tile[DEFAULT_MAP.length][DEFAULT_MAP[0].length];
 
-        for(int y = 0; y < getHeight(); y++) {
-            for(int x = 0; x < getWidth(); x++) {
+        for(int x = 0; x < getHeight(); x++) {
+            for(int y = 0; y < getWidth(); y++) {
                 int tileId = DEFAULT_MAP[y][x];
 
                 if (tileId >= 1 & tileId <= 40) {
@@ -86,8 +90,9 @@ public class GameMap extends GameObject{
         return tiles[y][x];
     }
 
-    public static void setTile(int x, int y, Tile tile) {
-        tiles[y][x] = tile;
+    public void setTile(Tile tile) {
+
+        tiles[tile.getY()][tile.getX()] = tile;
     }
 }
 

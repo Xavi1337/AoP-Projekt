@@ -6,49 +6,50 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
-public class Player extends Figurenposition implements KeyListener {
+public class Player {
+    private int xpos;
+    private int ypos;
 
-    private String state = "Wait";
-    private Tile[] steine;
+    private int versuche = 0;
+    private ArrayList<Tile> steine;
 
-    public Player(double centerX, double centerY, double radius) {
-
-        super(centerX, centerY, radius, Color.YELLOW);
-
+    public Player() {
+        this.steine = new ArrayList<>();
     }
 
-    @Override
-    public void render(Graphics2D g, int tileSize) {
-        double centerXOnScreen = centerX * tileSize;
-        double centerYOnScreen = centerY * tileSize;
-        double radiusOnScreen = radius * tileSize;
-        double diameterOnScreen = radiusOnScreen * 2.0;
-
-        g.setColor(color);
-        g.fill(new Ellipse2D.Double(centerXOnScreen - radiusOnScreen, centerYOnScreen - radiusOnScreen, diameterOnScreen, diameterOnScreen));
+    public void setxpos(int xpos) {
+        this.xpos = xpos;
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
+    public void setypos(int ypos) {
+        this.ypos = ypos;
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-
+    public int getxpos() {
+        return xpos;
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-
+    public int getypos() {
+        return ypos;
     }
 
-    public String getState() {
-        return state;
+
+
+    public ArrayList<Tile> getSteine() {
+        return steine;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setSteine(ArrayList<Tile> steine) {
+        this.steine = steine;
+    }
+
+    public int getVersuche() {
+        return versuche;
+    }
+
+    public void setVersuche(int versuche) {
+        this.versuche = versuche;
     }
 }

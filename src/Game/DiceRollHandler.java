@@ -7,16 +7,17 @@ import java.util.Random;
 class DiceRollHandler implements ActionListener {
     int lastDiceRoll = 0;
     Display display;
-    Spielablauf spielablauf = new Spielablauf();
+    Spielablauf spielablauf;
 
     public DiceRollHandler(Display display) {
+
         this.display = display;
+        this.spielablauf = new Spielablauf(display.getMap());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         lastDiceRoll = rollDice();
-        System.out.println("Geworfen: " + lastDiceRoll);
         spielablauf.checkDiceRoll(lastDiceRoll);
         display.repaint();
     }
