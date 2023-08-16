@@ -91,7 +91,6 @@ public class GameMap extends GameObject{
     }
 
     public void setTile(Tile tile) {
-
         tiles[tile.getY()][tile.getX()] = tile;
     }
 }
