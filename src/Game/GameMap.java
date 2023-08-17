@@ -34,7 +34,7 @@ public class GameMap extends GameObject{
 
         for(int x = 0; x < getHeight(); x++) {
             for(int y = 0; y < getWidth(); y++) {
-                int tileId = DEFAULT_MAP[y][x];
+                int tileId = DEFAULT_MAP[x][y];
 
                 if (tileId >= 1 & tileId <= 40) {
                     tiles[x][y] = new Field(x, y);
@@ -91,7 +91,7 @@ public class GameMap extends GameObject{
     }
 
     public void setTile(Tile tile) {
-        tiles[tile.getY()][tile.getX()] = tile;
+        tiles[tile.getX()][tile.getY()] = tile;
     }
 }
 

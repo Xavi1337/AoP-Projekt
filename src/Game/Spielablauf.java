@@ -13,7 +13,7 @@ class Spielablauf  {
         this.map = map;
         for (int i = 0; i < spieleranzahl; i++) {
             if (i == 0) {
-                Integer[][] weg =      {{4, 0}, //Start Gruen
+                Integer[][] weg =      {{0, 4}, //Start Gruen
                                         {4, 1}, {4, 2}, {4, 3},
                                         {4, 4},
                                         {3, 4}, {2, 4}, {1, 4},
@@ -44,7 +44,7 @@ class Spielablauf  {
                                         {5, 1}, {5, 2}, {5, 3}, {5, 4}}; //Ziel Gruen
                 spielers[i] = new Player(weg);
             } else if (i == 1) {
-                Integer[][] weg =      {{0, 6}, //Start Gelb
+                Integer[][] weg =      {{6, 0}, //Start Gelb
                                         {1, 6}, {2, 6}, {3, 6},
                                         {4, 6},
                                         {4, 7}, {4, 8}, {4, 9},
@@ -75,7 +75,7 @@ class Spielablauf  {
                                         {1, 5}, {2, 5}, {3, 5}, {4, 5}}; //Ziel Gelb
                 spielers[i] = new Player(weg);
             } else if (i == 2) {
-                Integer[][] weg =      {{6, 10}, //Start Blau
+                Integer[][] weg =      {{10, 6}, //Start Blau
                                         {6, 9}, {6, 8}, {6, 7},
                                         {6, 6},
                                         {7, 6}, {8, 6}, {9, 6},
@@ -106,7 +106,7 @@ class Spielablauf  {
                                         {5, 9}, {5, 8}, {5, 7}, {5, 6}}; //Ziel Blau
                 spielers[i] = new Player(weg);
             } else if (i == 3) {
-                Integer[][] weg =      {{10, 4}, //Start Rot
+                Integer[][] weg =      {{4, 10}, //Start Rot
                                         {9, 4}, {8, 4}, {7, 4},
                                         {6, 4},
                                         {6, 3}, {6, 2}, {6, 1},
