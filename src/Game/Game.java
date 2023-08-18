@@ -3,6 +3,7 @@ package Game;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
 import java.util.Scanner;
 import java.awt.*;
 
@@ -13,6 +14,19 @@ public class Game extends JFrame {
     public Game() {
         super("Game");
         display = new Display();
+
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        display.add(scrollPane);
+
+        ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
+        System.setOut(new PrintStream(consoleOutput));
+        System.setErr(new PrintStream(consoleOutput));
+
+        
+        System.out.println("Dies ist eine Konsolenausgabe.");
+        System.err.println("Dies ist eine Fehlerausgabe.");
 
 
 
@@ -25,7 +39,8 @@ public class Game extends JFrame {
         RestartHandler restartHandler = new RestartHandler(this); // Neuer ActionListener
         b2.addActionListener(restartHandler);
 
-
+        b1.setSize(100, 100);
+        b1.setLocation(10,10);
 
 
 
@@ -34,15 +49,17 @@ public class Game extends JFrame {
 
         this.add(display);
 
-        setSize(670,700);
-        setResizable(false);
+        setSize(1920,1080);
+        setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
 
 
         setLocationRelativeTo(null);
         setVisible(true);
+
+
+
     }
 
 
