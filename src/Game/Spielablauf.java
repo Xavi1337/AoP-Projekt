@@ -199,7 +199,7 @@ class Spielablauf  {
 
     public void spielzug(int diceRoll) {
         int pos = spielers[runde%4].getSteine().get(0).getPos();
-        Tile field = new Field(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]);
+        Tile field = new Field(spielers[runde%4].getWeg()[pos][1], spielers[runde%4].getWeg()[pos][0]);
         map.setTile(field);
         int newPos = pos + diceRoll;
         switch (runde % 4) {
