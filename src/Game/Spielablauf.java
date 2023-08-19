@@ -15,7 +15,7 @@ class Spielablauf  {
         this.map = map;
         for (int i = 0; i < spieleranzahl; i++) {
             if (i == 0) {
-                Integer[][] weg =      {{0, 4}, //Start Gruen
+                Integer[][] weg =      {{4, 0}, //Start Gruen
                                         {4, 1}, {4, 2}, {4, 3},
                                         {4, 4},
                                         {3, 4}, {2, 4}, {1, 4},
@@ -46,7 +46,7 @@ class Spielablauf  {
                                         {5, 1}, {5, 2}, {5, 3}, {5, 4}}; //Ziel Gruen
                 spielers[i] = new Player(weg);
             } else if (i == 1) {
-                Integer[][] weg =      {{6, 0}, //Start Gelb
+                Integer[][] weg =      {{0, 6}, //Start Gelb
                                         {1, 6}, {2, 6}, {3, 6},
                                         {4, 6},
                                         {4, 7}, {4, 8}, {4, 9},
@@ -77,7 +77,7 @@ class Spielablauf  {
                                         {1, 5}, {2, 5}, {3, 5}, {4, 5}}; //Ziel Gelb
                 spielers[i] = new Player(weg);
             } else if (i == 2) {
-                Integer[][] weg =      {{10, 6}, //Start Blau
+                Integer[][] weg =      {{6, 10}, //Start Blau
                                         {6, 9}, {6, 8}, {6, 7},
                                         {6, 6},
                                         {7, 6}, {8, 6}, {9, 6},
@@ -107,8 +107,8 @@ class Spielablauf  {
 
                                         {5, 9}, {5, 8}, {5, 7}, {5, 6}}; //Ziel Blau
                 spielers[i] = new Player(weg);
-            } else if (i == 3) {
-                Integer[][] weg =      {{4, 10}, //Start Rot
+            } else {
+                Integer[][] weg =      {{10, 4}, //Start Rot
                                         {9, 4}, {8, 4}, {7, 4},
                                         {6, 4},
                                         {6, 3}, {6, 2}, {6, 1},
@@ -243,25 +243,25 @@ class Spielablauf  {
 
         switch(runde%4) {
             case 0:
-                Tile spielerGruen = new SpielerGruen(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                Tile spielerGruen = new SpielerGruen(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
                 spielerGruen.setPos(0);
                 spielers[runde%4].getSteine().add(spielerGruen);
                 map.setTile(spielerGruen);
                 break;
             case 1:
-                Tile spielerGelb = new SpielerGelb(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                Tile spielerGelb = new SpielerGelb(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
                 spielerGelb.setPos(0);
                 spielers[runde%4].getSteine().add(spielerGelb);
                 map.setTile(spielerGelb);
                 break;
             case 2:
-                Tile spielerBlau = new SpielerBlau(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                Tile spielerBlau = new SpielerBlau(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
                 spielerBlau.setPos(0);
                 spielers[runde%4].getSteine().add(spielerBlau);
                 map.setTile(spielerBlau);
                 break;
             case 3:
-                Tile spielerRot = new SpielerRot(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                Tile spielerRot = new SpielerRot(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
                 spielerRot.setPos(0);
                 spielers[runde%4].getSteine().add(spielerRot);
                 map.setTile(spielerRot);
@@ -273,16 +273,8 @@ class Spielablauf  {
     public void spielzug(int diceRoll) {
         //Stein kann frei ausgewählt werden
         int pos = spielers[runde%4].getSteine().get(0).getPos();
-
-        System.out.println(pos);
-
-        System.out.println(Arrays.deepToString(map.getTiles()));
-
         Tile field = new Field(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]);
         map.setTile(field);
-
-        System.out.println(map.getTile(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]));
-
         int newPos = pos + diceRoll;
         switch (runde % 4) {
             case 0:
@@ -294,6 +286,7 @@ class Spielablauf  {
                 break;
             case 1:
                 Tile spielerGelb = new SpielerGelb(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
+                System.out.println(Arrays.toString(spielers[runde % 4].getWeg()[newPos]));
                 spielerGelb.setPos(newPos);
                 spielers[runde%4].getSteine().remove(0);
                 spielers[runde%4].getSteine().add(0, spielerGelb);

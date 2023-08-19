@@ -21,11 +21,6 @@ class DiceRollHandler implements ActionListener {
         spielablauf.checkDiceRoll(lastDiceRoll);
         display.validate();
         display.repaint();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            throw new RuntimeException(ex);
-        }
     }
 
     public int rollDice() {

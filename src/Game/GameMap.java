@@ -33,9 +33,9 @@ public class GameMap extends GameObject{
         this.tileSize = tileSize;
         tiles = new Tile[DEFAULT_MAP.length][DEFAULT_MAP[0].length];
 
-        for(int x = 0; x < getHeight(); x++) {
-            for(int y = 0; y < getWidth(); y++) {
-                int tileId = DEFAULT_MAP[x][y];
+        for (int x = 0; x < getHeight(); x++) {
+            for (int y = 0; y < getWidth(); y++) {
+                int tileId = DEFAULT_MAP[y][x];
 
                 if (tileId >= 1 & tileId <= 40) {
                     tiles[x][y] = new Field(x, y);
@@ -60,6 +60,10 @@ public class GameMap extends GameObject{
                 }
             }
         }
+        //tiles[0][0] = new SpielerRot(0,0);
+        //tiles[0][1] = new SpielerRot(0,1);
+        //tiles[1][0] = new SpielerRot(1,0);
+        //tiles[1][1] = new SpielerRot(1,1);
     }
 
     public int getWidth() {
@@ -93,7 +97,7 @@ public class GameMap extends GameObject{
 
     public Tile getTile(int x, int y) {
 
-        return tiles[x][y];
+        return tiles[y][x];
     }
 
     public void setTile(Tile tile) {
