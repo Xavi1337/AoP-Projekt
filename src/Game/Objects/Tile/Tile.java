@@ -13,6 +13,7 @@ public abstract class Tile extends GameObject {
         this.x = x;
         this.y = y;
         this.state = 1;
+        this.pos = 0;
     }
 
     public int getX() {

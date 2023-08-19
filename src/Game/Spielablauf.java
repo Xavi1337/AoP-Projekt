@@ -3,6 +3,7 @@ package Game;
 import Game.Objects.*;
 import Game.Objects.Tile.*;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -160,7 +161,8 @@ class Spielablauf  {
                     spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
                 }
             } else {
-                System.out.println("Der nächste Spieler ist an der Reihe.");
+
+                zeigeSpielerPopup(String.valueOf(spielers[runde % 4]));
                 spielers[runde % 4].setVersuche(0);
                 runde++;
             }
@@ -171,20 +173,26 @@ class Spielablauf  {
                 spielzugStart(diceRoll);
             } else {
                 System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewürfelt!");
-                spielzug(diceRoll);
+                spielzug(diceRoll, 0);
                 runde++;
             }
         } else if (spielers[runde % 4].getSteine().size() == 4) {
             System.out.println("Spieler " + runde % 4 + " hat alle Steine auf dem Spielfeld");
             if (diceRoll == 6) {
                 System.out.println("Glückwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
-                spielzug(diceRoll);
+                spielzug(diceRoll, 0);
             } else {
                 System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewürfelt!");
-                spielzug(diceRoll);
+                spielzug(diceRoll, 0);
                 runde++;
             }
         }
+    }
+
+    public static void zeigeSpielerPopup(String spielerName) {
+        JFrame frame = new JFrame("Spielerwechsel");
+        JOptionPane.showMessageDialog(frame, "Nächster Spieler: " + spielerName, "Spielerwechsel", JOptionPane.INFORMATION_MESSAGE);
+        frame.dispose();
     }
 
     public void startfeldleeren() {
@@ -255,33 +263,49 @@ class Spielablauf  {
 
     public void spielzugStart(int diceRoll) {
         //nach gewürfelter 6, Stein muss bewegt werden
-        startfeldleeren();
+
         Tile field = new Field(spielers[runde%4].getWeg()[0][0], spielers[runde%4].getWeg()[0][1]);
         map.setTile(field);
         switch(runde%4) {
             case 0:
-                Tile spielerGruen = new SpielerGruen(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
-                spielerGruen.setPos(0);
-                spielers[runde%4].getSteine().add(spielerGruen);
-                map.setTile(spielerGruen);
-                break;
+                if (zielfeldTest(0)) {
+                    startfeldleeren();
+                    Tile spielerGruen = new SpielerGruen(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    spielerGruen.setPos(0);
+                    spielers[runde % 4].getSteine().add(spielerGruen);
+                    map.setTile(spielerGruen);
+
+                } else {
+
+                }
+                    break;
+
             case 1:
-                Tile spielerGelb = new SpielerGelb(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
-                spielerGelb.setPos(0);
-                spielers[runde%4].getSteine().add(spielerGelb);
-                map.setTile(spielerGelb);
+                if (zielfeldTest(0)) {
+                    startfeldleeren();
+                    Tile spielerGelb = new SpielerGelb(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    spielerGelb.setPos(0);
+                    spielers[runde % 4].getSteine().add(spielerGelb);
+                    map.setTile(spielerGelb);
+                }
                 break;
             case 2:
-                Tile spielerBlau = new SpielerBlau(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
-                spielerBlau.setPos(0);
-                spielers[runde%4].getSteine().add(spielerBlau);
-                map.setTile(spielerBlau);
+                if (zielfeldTest(0)) {
+                    startfeldleeren();
+                    Tile spielerBlau = new SpielerBlau(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    spielerBlau.setPos(0);
+                    spielers[runde % 4].getSteine().add(spielerBlau);
+                    map.setTile(spielerBlau);
+                }
                 break;
             case 3:
-                Tile spielerRot = new SpielerRot(spielers[runde%4].getxpos(), spielers[runde%4].getypos());
-                spielerRot.setPos(0);
-                spielers[runde%4].getSteine().add(spielerRot);
-                map.setTile(spielerRot);
+                if (zielfeldTest(0)) {
+                    startfeldleeren();
+                    Tile spielerRot = new SpielerRot(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    spielerRot.setPos(0);
+                    spielers[runde % 4].getSteine().add(spielerRot);
+                    map.setTile(spielerRot);
+                }
                 break;
         }
     }
@@ -347,10 +371,12 @@ class Spielablauf  {
         }
         return true;
     }
+    public void steinauswahl(){
 
-    public void spielzug(int diceRoll) {
+    }
+    public void spielzug(int diceRoll, int index) {
         //Stein kann frei ausgewählt werden
-        int pos = spielers[runde%4].getSteine().get(0).getPos();
+        int pos = spielers[runde%4].getSteine().get(index).getPos();
         Tile field = new Field(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]);
         map.setTile(field);
         int newPos = pos + diceRoll;
@@ -359,19 +385,19 @@ class Spielablauf  {
                 if (zielfeldTest(newPos)) {
                     Tile spielerGruen = new SpielerGruen(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
                     spielerGruen.setPos(newPos);
-                    spielers[runde%4].getSteine().remove(0);
-                    spielers[runde%4].getSteine().add(0, spielerGruen);
+                    spielers[runde%4].getSteine().remove(index);
+                    spielers[runde%4].getSteine().add(index, spielerGruen);
                     map.setTile(spielerGruen);
                 } else {
-                    System.out.println("Zielfeld ist durch eigenen Spielfigur blockiert.");
+                    System.out.println("Zielfeld ist durch eigene Spielfigur blockiert.");
                 }
                 break;
             case 1:
                 if (zielfeldTest(newPos)) {
                     Tile spielerGelb = new SpielerGelb(spielers[runde % 4].getWeg()[newPos][0], spielers[runde % 4].getWeg()[newPos][1]);
                     spielerGelb.setPos(newPos);
-                    spielers[runde % 4].getSteine().remove(0);
-                    spielers[runde % 4].getSteine().add(0, spielerGelb);
+                    spielers[runde % 4].getSteine().remove(index);
+                    spielers[runde % 4].getSteine().add(index, spielerGelb);
                     map.setTile(spielerGelb);
                 } else {
                 System.out.println("Zielfeld ist durch eigenen Spielfigur blockiert.");
@@ -381,8 +407,8 @@ class Spielablauf  {
                 if (zielfeldTest(newPos)) {
                     Tile spielerBlau = new SpielerBlau(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
                     spielerBlau.setPos(newPos);
-                    spielers[runde%4].getSteine().remove(0);
-                    spielers[runde%4].getSteine().add(0, spielerBlau);
+                    spielers[runde%4].getSteine().remove(index);
+                    spielers[runde%4].getSteine().add(index, spielerBlau);
                     map.setTile(spielerBlau);
                 } else {
                     System.out.println("Zielfeld ist durch eigenen Spielfigur blockiert.");
@@ -392,8 +418,8 @@ class Spielablauf  {
                 if (zielfeldTest(newPos)) {
                     Tile spielerRot = new SpielerRot(spielers[runde%4].getWeg()[newPos][0], spielers[runde%4].getWeg()[newPos][1]);
                     spielerRot.setPos(newPos);
-                    spielers[runde%4].getSteine().remove(0);
-                    spielers[runde%4].getSteine().add(0, spielerRot);
+                    spielers[runde%4].getSteine().remove(index);
+                    spielers[runde%4].getSteine().add(index, spielerRot);
                     map.setTile(spielerRot);
                 } else {
                     System.out.println("Zielfeld ist durch eigenen Spielfigur blockiert.");
