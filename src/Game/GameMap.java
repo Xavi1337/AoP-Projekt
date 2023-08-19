@@ -97,7 +97,7 @@ public class GameMap extends GameObject{
 
     public Tile getTile(int x, int y) {
 
-        return tiles[y][x];
+        return tiles[x][y];
     }
 
     public void setTile(Tile tile) {

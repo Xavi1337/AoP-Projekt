@@ -8,7 +8,14 @@ public class StartRed extends Tile {
     }
 
     public void render(Graphics2D g, int tileSize) {
-        g.setColor(Color.red);
-        g.fillOval(this.x * tileSize, this.y * tileSize, tileSize - 10, tileSize - 10);
+        if (getState() == 1) {
+            g.setColor(Color.red);
+            g.fillOval(this.x * tileSize, this.y * tileSize, tileSize - 10, tileSize - 10);
+        } else {
+            g.setColor(Color.white);
+            g.fillOval(this.x * tileSize, this.y * tileSize, tileSize - 10, tileSize - 10);
+            g.setColor(Color.red);
+            g.drawOval(this.x * tileSize, this.y * tileSize, tileSize - 10, tileSize - 10);
+        }
     }
 }
