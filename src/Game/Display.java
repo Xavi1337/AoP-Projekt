@@ -18,7 +18,7 @@ public class Display extends JPanel{
     private final Player2 player2;
     private final Player3 player3;
     private final Player4 player4;
-    private final Color yellowboard = new Color(204, 204, 0);
+    private final Color yellowboard = new Color(254, 241, 126);
 
     public Display() {
 
@@ -45,4 +45,5 @@ public class Display extends JPanel{
         player3.render(g2, map.getTileSize());
         player4.render(g2, map.getTileSize());
     }
+
 }

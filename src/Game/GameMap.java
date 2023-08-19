@@ -26,7 +26,8 @@ public class GameMap extends GameObject{
 
     public final int tileSize;
 
-    private static Tile[][] tiles;
+
+    private Tile[][] tiles;
 
     public GameMap (int tileSize) {
         this.tileSize = tileSize;
@@ -59,17 +60,15 @@ public class GameMap extends GameObject{
                 }
             }
         }
-        //tiles[0][0] = new SpielerRot(0,0);
-        //tiles[0][1] = new SpielerRot(0,1);
-        //tiles[1][0] = new SpielerRot(1,0);
-        //tiles[1][1] = new SpielerRot(1,1);
     }
 
     public int getWidth() {
+
         return tiles[0].length;
     }
 
     public int getHeight() {
+
         return tiles.length;
     }
 
@@ -83,11 +82,18 @@ public class GameMap extends GameObject{
     }
 
     public int getTileSize() {
+
         return tileSize;
     }
 
+    public Tile[][] getTiles() {
+        return tiles;
+    }
+
+
     public Tile getTile(int x, int y) {
-        return tiles[y][x];
+
+        return tiles[x][y];
     }
 
     public void setTile(Tile tile) {

@@ -3,6 +3,8 @@ package Game;
 import Game.Objects.*;
 import Game.Objects.Tile.*;
 
+import java.util.Arrays;
+
 class Spielablauf  {
     private int runde = 0;
     private GameMap map;
@@ -145,10 +147,12 @@ class Spielablauf  {
             if (spielers[runde % 4].getVersuche() < 3) {
                 if (diceRoll == 6) {
                     System.out.println("Glückwunsch! Eine 6 wurde geworfen.");
+                    System.out.println("Keine Spielsteine auf dem Feld.");
                     spielers[runde % 4].setVersuche(0);
-                    spielstart();
+                    spielzugStart(diceRoll);
                 } else {
                     System.out.println("Sie haben eine " + diceRoll + " gewürfelt!");
+                    System.out.println("Keine Spielsteine auf dem Feld.");
                     spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
                 }
             } else {
@@ -156,51 +160,129 @@ class Spielablauf  {
                 spielers[runde % 4].setVersuche(0);
                 runde++;
             }
-        } else if (!(map.getTile(spielers[runde%4].getxpos(), spielers[runde%4].getypos()) instanceof Field) && spielers[runde % 4].getVersuche() == 0) {
-            System.out.println("Hallo");
-            for (int i = 0; i < spielers[runde%4].getSteine().size(); i++) {
-                if (map.getTile(spielers[runde%4].getxpos(), spielers[runde%4].getypos()) == spielers[runde%4].getSteine().get(i)) {
-                    if (diceRoll == 6) {
-                        System.out.println("Glückwunsch! Eine 6 wurde geworfen.");
-                        spielzugStart(diceRoll);
-                    } else {
-                        System.out.println("Sie haben eine " + diceRoll + " gewürfelt!");
-                        spielzug(diceRoll);
-                        spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
-                    }
-                } else {
-                    //Hier ist das Startfeld blockiert
-                    System.out.println(map.getTile(spielers[runde%4].getxpos(), spielers[runde%4].getypos()) + " steht auf dem Feld!");
-                }
-            }
-        } else if (map.getTile(spielers[runde%4].getxpos(), spielers[runde%4].getypos()) instanceof Field && spielers[runde % 4].getVersuche() == 0) {
+        } else if (spielers[runde % 4].getSteine().size() < 4) {
+            System.out.println("1-3 Steine auf dem Spielfeld");
             if (diceRoll == 6) {
                 System.out.println("Glückwunsch! Eine 6 wurde geworfen.");
-                if (spielers[runde % 4].getSteine().size() < 4) {
-                    spielzugStart(diceRoll);
-                } else {
-                    spielzug(diceRoll);
-                }
+                spielzugStart(diceRoll);
             } else {
                 System.out.println("Sie haben eine " + diceRoll + " gewürfelt!");
                 spielzug(diceRoll);
-                spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
+                runde++;
+                //spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
             }
-        } else {
-            System.out.println("Der nächste Spieler ist an der Reihe.");
-            spielers[runde % 4].setVersuche(0);
-            runde++;
+        } else if (spielers[runde % 4].getSteine().size() == 4) {
+            System.out.println("Alle Steine auf dem Spielfeld");
+            if (diceRoll == 6) {
+                System.out.println("Glückwunsch! Eine 6 wurde geworfen.");
+                spielzug(diceRoll);
+            } else {
+                System.out.println("Sie haben eine " + diceRoll + " gewürfelt!");
+                spielzug(diceRoll);
+                runde++;
+                //spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
+            }
+        }
+    }
+
+    public void startfeldTest() {
+        for (int i = 0; i < map.getTiles().length; i++) {
+            for (int j = 0; j < map.getTiles()[i].length; j++) {
+                switch (runde % 4) {
+                    case 0:
+                        if (map.getTiles()[i][j] instanceof StartGreen) {
+                            int posX = map.getTiles()[i][j].getX();
+                            int posY = map.getTiles()[i][j].getY();
+                            Tile field = new Field(posX, posY);
+                            map.setTile(field);
+                            return;
+                        }
+                        break;
+                    case 1:
+                        if (map.getTiles()[i][j] instanceof StartYellow) {
+                            int posX = map.getTiles()[i][j].getX();
+                            int posY = map.getTiles()[i][j].getY();
+                            Tile field = new Field(posX, posY);
+                            map.setTile(field);
+                            return;
+                        }
+                        break;
+                    case 2:
+                        if (map.getTiles()[i][j] instanceof StartBlue) {
+                            int posX = map.getTiles()[i][j].getX();
+                            int posY = map.getTiles()[i][j].getY();
+                            Tile field = new Field(posX, posY);
+                            map.setTile(field);
+                            return;
+                        }
+                        break;
+                    case 3:
+                        if (map.getTiles()[i][j] instanceof StartRed) {
+                            int posX = map.getTiles()[i][j].getX();
+                            int posY = map.getTiles()[i][j].getY();
+                            Tile field = new Field(posX, posY);
+                            map.setTile(field);
+                            return;
+                        }
+                        break;
+                }
+            }
         }
     }
 
     public void spielzugStart(int diceRoll) {
+        //nach gewürfelter 6, Stein muss bewegt werden
+        startfeldTest();
 
+
+        System.out.println(Arrays.deepToString(map.getTiles()));
+
+        Tile field = new Field(spielers[runde%4].getWeg()[0][0], spielers[runde%4].getWeg()[0][1]);
+        map.setTile(field);
+
+
+        switch(runde%4) {
+            case 0:
+                Tile spielerGruen = new SpielerGruen(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                spielerGruen.setPos(0);
+                spielers[runde%4].getSteine().add(spielerGruen);
+                map.setTile(spielerGruen);
+                break;
+            case 1:
+                Tile spielerGelb = new SpielerGelb(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                spielerGelb.setPos(0);
+                spielers[runde%4].getSteine().add(spielerGelb);
+                map.setTile(spielerGelb);
+                break;
+            case 2:
+                Tile spielerBlau = new SpielerBlau(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                spielerBlau.setPos(0);
+                spielers[runde%4].getSteine().add(spielerBlau);
+                map.setTile(spielerBlau);
+                break;
+            case 3:
+                Tile spielerRot = new SpielerRot(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
+                spielerRot.setPos(0);
+                spielers[runde%4].getSteine().add(spielerRot);
+                map.setTile(spielerRot);
+                break;
+        }
     }
 
+
     public void spielzug(int diceRoll) {
+        //Stein kann frei ausgewählt werden
         int pos = spielers[runde%4].getSteine().get(0).getPos();
-        Tile field = new Field(spielers[runde%4].getWeg()[pos][1], spielers[runde%4].getWeg()[pos][0]);
+
+        System.out.println(pos);
+
+        System.out.println(Arrays.deepToString(map.getTiles()));
+
+        Tile field = new Field(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]);
         map.setTile(field);
+
+        System.out.println(map.getTile(spielers[runde%4].getWeg()[pos][0], spielers[runde%4].getWeg()[pos][1]));
+
         int newPos = pos + diceRoll;
         switch (runde % 4) {
             case 0:
@@ -234,38 +316,4 @@ class Spielablauf  {
         }
     }
 
-    public void spielstart() {
-        switch(runde%4) {
-            case 0:
-                Tile spielerGruen = new SpielerGruen(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
-                spielerGruen.setPos(0);
-                spielers[runde%4].getSteine().add(spielerGruen);
-                map.setTile(spielerGruen);
-                break;
-            case 1:
-                Tile spielerGelb = new SpielerGelb(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
-                spielerGelb.setPos(0);
-                spielers[runde%4].getSteine().add(spielerGelb);
-                map.setTile(spielerGelb);
-                break;
-            case 2:
-                Tile spielerBlau = new SpielerBlau(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
-                spielerBlau.setPos(0);
-                spielers[runde%4].getSteine().add(spielerBlau);
-                map.setTile(spielerBlau);
-                break;
-            case 3:
-                Tile spielerRot = new SpielerRot(spielers[runde%4].getypos(), spielers[runde%4].getxpos());
-                spielerRot.setPos(0);
-                spielers[runde%4].getSteine().add(spielerRot);
-                map.setTile(spielerRot);
-                break;
-        }
-    }
 }
-
-/* startposition grün: x 4, y 0
-   startposition gelb: x 0, y 6
-   startposition blau: x 6, y 10
-   startposition rot:  x 10, y 4
- */
