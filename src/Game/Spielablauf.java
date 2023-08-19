@@ -4,6 +4,7 @@ import Game.Objects.*;
 import Game.Objects.Tile.*;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 class Spielablauf  {
     private int runde = 0;
@@ -291,7 +292,13 @@ class Spielablauf  {
                 if (runde%4 == 0) {
                     return false;
                 } else {
-                    startfeldfuellen(0);
+                    for (int i = 0 ; i < spielers[0].getSteine().size(); i++) {
+                        if (Objects.equals(spielers[runde % 4].getWeg()[newpos][0], spielers[0].getWeg()[spielers[0].getSteine().get(i).getPos()][0]) &&
+                            Objects.equals(spielers[runde % 4].getWeg()[newpos][1], spielers[0].getWeg()[spielers[0].getSteine().get(i).getPos()][1])) {
+                            spielers[0].getSteine().remove(i);
+                            startfeldfuellen(0);
+                        }
+                    }
                     return true;
                 }
             }
@@ -299,7 +306,13 @@ class Spielablauf  {
                 if (runde%4 == 1) {
                     return false;
                 } else {
-                    startfeldfuellen(1);
+                    for (int i = 0 ; i < spielers[1].getSteine().size(); i++) {
+                        if (Objects.equals(spielers[runde % 4].getWeg()[newpos][0], spielers[1].getWeg()[spielers[1].getSteine().get(i).getPos()][0]) &&
+                            Objects.equals(spielers[runde % 4].getWeg()[newpos][1], spielers[1].getWeg()[spielers[1].getSteine().get(i).getPos()][1])) {
+                            spielers[1].getSteine().remove(i);
+                            startfeldfuellen(1);
+                        }
+                    }
                     return true;
                 }
             }
@@ -307,16 +320,27 @@ class Spielablauf  {
                 if (runde%4 == 2) {
                     return false;
                 } else {
-                    startfeldfuellen(2);
+                    for (int i = 0 ; i < spielers[2].getSteine().size(); i++) {
+                        if (Objects.equals(spielers[runde % 4].getWeg()[newpos][0], spielers[2].getWeg()[spielers[2].getSteine().get(i).getPos()][0]) &&
+                            Objects.equals(spielers[runde % 4].getWeg()[newpos][1], spielers[2].getWeg()[spielers[2].getSteine().get(i).getPos()][1])) {
+                            spielers[2].getSteine().remove(i);
+                            startfeldfuellen(2);
+                        }
+                    }
                     return true;
-
                 }
             }
             if (map.getTile(spielers[runde%4].getWeg()[newpos][0], spielers[runde%4].getWeg()[newpos][1]) instanceof SpielerRot) {
                 if (runde%4 == 3) {
                     return false;
                 } else {
-                    startfeldfuellen(3);
+                    for (int i = 0 ; i < spielers[3].getSteine().size(); i++) {
+                        if (Objects.equals(spielers[runde % 4].getWeg()[newpos][0], spielers[3].getWeg()[spielers[3].getSteine().get(i).getPos()][0]) &&
+                            Objects.equals(spielers[runde % 4].getWeg()[newpos][1], spielers[3].getWeg()[spielers[3].getSteine().get(i).getPos()][1])) {
+                            spielers[3].getSteine().remove(i);
+                            startfeldfuellen(3);
+                        }
+                    }
                     return true;
                 }
             }
