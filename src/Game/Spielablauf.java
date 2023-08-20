@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 class Spielablauf  {
     private int runde = 0;
@@ -186,10 +187,53 @@ class Spielablauf  {
                 System.out.println("Glückwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
                 new SteinAuswahlFenster(this, spielers, runde, diceRoll);
             } else {
-                System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewürfelt!");
+                System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
                 new SteinAuswahlFenster(this, spielers, runde, diceRoll);
             }
         }
+    }
+
+    public void checkDiceRollKI(int diceRoll) {
+        if (spielers[runde % 4].getSteine().isEmpty()) {
+            if (spielers[runde % 4].getVersuche() < 3) {
+                if (diceRoll == 6) {
+                    System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
+
+                    spielers[runde % 4].setVersuche(0);
+                    spielzugStart(diceRoll);
+                } else {
+                    System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
+
+                    spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
+                }
+            } else {
+                spielers[runde % 4].setVersuche(0);
+                runde++;
+            }
+        } else if (spielers[runde % 4].getSteine().size() < 4) {
+
+            if (diceRoll == 6) {
+                System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
+                spielzugStart(diceRoll);
+            } else {
+                System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
+                spielzug(diceRoll, randomIndex());
+            }
+        } else if (spielers[runde % 4].getSteine().size() == 4) {
+
+            if (diceRoll == 6) {
+                System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
+                spielzug(diceRoll, randomIndex());
+            } else {
+                System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
+                spielzug(diceRoll, randomIndex());
+            }
+        }
+    }
+
+    public int randomIndex() {
+        Random random = new Random();
+        return random.nextInt(spielers[runde % 4].getSteine().size()) ;
     }
 
     public static void zeigeSpielerPopup(String spielerName) {
@@ -426,6 +470,11 @@ class Spielablauf  {
         if (diceRoll < 6) {
             runde++;
         }
+    }
+
+
+    public int getRunde() {
+        return runde;
     }
 
 }

@@ -16,7 +16,7 @@ public class Display extends JPanel{
 
     public Display() {
 
-        map = new GameMap(80);
+        map = new GameMap(46);
 
 
     }

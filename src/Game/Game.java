@@ -12,10 +12,10 @@ public class Game extends JFrame {
 
     private final Display display;
 
-    public Game() {
+
+    public Game(int teilnehmer) {
         super("Game");
         display = new Display();
-
         this.add(display);
 
 
@@ -30,6 +30,7 @@ public class Game extends JFrame {
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
 
+        this.setLayout(new GridLayout(2, 2));
 
         ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
         System.setOut(new PrintStream(consoleOutput));
@@ -39,7 +40,7 @@ public class Game extends JFrame {
         //System.err.println("Dies ist eine Fehlerausgabe.");
 
         JButton b1 = new JButton("Wuerfeln");
-        DiceRollHandler rollHandler = new DiceRollHandler(display);
+        DiceRollHandler rollHandler = new DiceRollHandler(display, teilnehmer);
         b1.addActionListener(rollHandler);
 
         JButton b2 = new JButton("Neustart");
@@ -52,12 +53,12 @@ public class Game extends JFrame {
 
 
 
-        display.add(scrollPane);
-        display.add(b1);
-        display.add(b2);
+        this.add(scrollPane);
+        this.add(b1);
+        this.add(b2);
 
-        display.revalidate();
-        display.repaint();
+        this.revalidate();
+        this.repaint();
 
 
 
