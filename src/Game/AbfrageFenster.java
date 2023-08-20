@@ -49,7 +49,7 @@ public class AbfrageFenster extends JFrame {
 
         add(panel);
 
-
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 }
