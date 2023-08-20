@@ -288,7 +288,7 @@ class Spielablauf  {
             case 1:
                 if (zielfeldTest(0)) {
                     startfeldleeren();
-                    Tile spielerGelb = new SpielerGelb(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    Tile spielerGelb = new SpielerGelb(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos(), spielers[runde % 4].getSteine().size());
                     spielerGelb.setPos(0);
                     spielers[runde % 4].getSteine().add(spielerGelb);
                     map.setTile(spielerGelb);
@@ -305,7 +305,7 @@ class Spielablauf  {
             case 2:
                 if (zielfeldTest(0)) {
                     startfeldleeren();
-                    Tile spielerBlau = new SpielerBlau(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    Tile spielerBlau = new SpielerBlau(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos(), spielers[runde % 4].getSteine().size());
                     spielerBlau.setPos(0);
                     spielers[runde % 4].getSteine().add(spielerBlau);
                     map.setTile(spielerBlau);
@@ -322,7 +322,7 @@ class Spielablauf  {
             case 3:
                 if (zielfeldTest(0)) {
                     startfeldleeren();
-                    Tile spielerRot = new SpielerRot(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos());
+                    Tile spielerRot = new SpielerRot(spielers[runde % 4].getxpos(), spielers[runde % 4].getypos(), spielers[runde % 4].getSteine().size());
                     spielerRot.setPos(0);
                     spielers[runde % 4].getSteine().add(spielerRot);
                     map.setTile(spielerRot);

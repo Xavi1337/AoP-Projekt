@@ -22,19 +22,19 @@ public class SpielerGruen extends Tile {
         switch (index) {
             case 0:
                 g.setColor(Color.black);
-                g.fillOval(this.x * tileSize + 25, this.y * tileSize + 25, tileSize - 50, tileSize - 50);
+                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
                 break;
             case 1:
-                g.setColor(Color.white);
-                g.fillOval(this.x * tileSize , this.y * tileSize, tileSize - 50, tileSize - 50);
+                g.setColor(Color.gray);
+                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
                 break;
             case 2:
-                g.setColor(Color.gray);
-                g.fillOval(this.x * tileSize , this.y * tileSize, tileSize - 50, tileSize - 50);
+                g.setColor(Color.lightGray);
+                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
                 break;
             case 3:
-                g.setColor(Color.lightGray);
-                g.fillOval(this.x * tileSize , this.y * tileSize, tileSize - 50, tileSize - 50);
+                g.setColor(Color.white);
+                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
                 break;
         }
     }
