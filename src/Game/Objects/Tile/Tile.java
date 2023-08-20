@@ -4,8 +4,9 @@ import Game.Objects.GameObject;
 
 public abstract class Tile extends GameObject {
 
-    protected final int x;
-    protected final int y;
+    protected int x;
+
+    protected int y;
     private int state;
     private int pos;
 
@@ -21,6 +22,14 @@ public abstract class Tile extends GameObject {
     }
     public int getY() {
         return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void setPos(int pos) {

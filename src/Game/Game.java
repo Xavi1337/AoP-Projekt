@@ -24,17 +24,13 @@ public class Game extends JFrame {
         /*ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
         System.setOut(new PrintStream(consoleOutput));
         System.setErr(new PrintStream(consoleOutput));*/
-
         
         //System.out.println("Dies ist eine Konsolenausgabe.");
         //System.err.println("Dies ist eine Fehlerausgabe.");
 
-
-
         JButton b1 = new JButton("Wuerfeln");
         DiceRollHandler rollHandler = new DiceRollHandler(display);
         b1.addActionListener(rollHandler);
-
 
         JButton b2 = new JButton("Neustart");
         RestartHandler restartHandler = new RestartHandler(this); // Neuer ActionListener
@@ -42,9 +38,6 @@ public class Game extends JFrame {
 
         b1.setSize(100, 100);
         b1.setLocation(10,10);
-
-
-
 
         display.add(b1);
         display.add(b2);
@@ -55,21 +48,9 @@ public class Game extends JFrame {
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
-
         setLocationRelativeTo(null);
         setVisible(true);
-
-
-
     }
-
-
-
-
-
-
-
 
     public static void main(String[] args) {
             new AbfrageFenster();
