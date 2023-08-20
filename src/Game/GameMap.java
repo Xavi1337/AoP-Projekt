@@ -60,10 +60,7 @@ public class GameMap extends GameObject{
                 }
             }
         }
-        //tiles[0][0] = new SpielerRot(0,0);
-        //tiles[0][1] = new SpielerRot(0,1);
-        //tiles[1][0] = new SpielerRot(1,0);
-        //tiles[1][1] = new SpielerRot(1,1);
+
     }
 
     public int getWidth() {
