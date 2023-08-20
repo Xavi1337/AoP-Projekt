@@ -12,7 +12,7 @@ class DiceRollHandler implements ActionListener {
     public DiceRollHandler(Display display) {
 
         this.display = display;
-        this.spielablauf = new Spielablauf(display.getMap());
+        this.spielablauf = new Spielablauf(display);
     }
 
     @Override

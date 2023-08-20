@@ -18,4 +18,5 @@ public class StartBlue extends Tile {
             g.drawOval(this.x * tileSize, this.y * tileSize, tileSize - 10, tileSize - 10);
         }
     }
+
 }

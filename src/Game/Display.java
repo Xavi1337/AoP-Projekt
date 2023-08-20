@@ -23,7 +23,7 @@ public class Display extends JPanel{
 
     public Display() {
 
-        map = new GameMap(50);
+        map = new GameMap(80);
         //player1 = new Player1(8.5, 12.5, 0.375);
         //player2 = new Player2(7.5, 12.5, 0.375);
         //player3 = new Player3(6.5, 12.5, 0.375);
