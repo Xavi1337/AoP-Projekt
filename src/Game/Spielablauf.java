@@ -463,7 +463,7 @@ class Spielablauf  {
                 System.out.println("Zielfeld ist durch eigene Spielfigur blockiert.");
             }
         } else {
-            System.out.println("Zielfeld ist außerhalb des Weges.");
+            System.out.println("Zielfeld ist ausserhalb des Weges.");
         }
         display.validate();
         display.repaint();
