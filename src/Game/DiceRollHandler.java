@@ -28,6 +28,9 @@ class DiceRollHandler implements ActionListener {
                 spielablauf.checkDiceRollKI(lastDiceRoll);
             }
         }
+        SoundManager soundManager = new SoundManager();
+        soundManager.loadSound("dice_roll.wav");
+        soundManager.playSound();
         display.validate();
         display.repaint();
     }

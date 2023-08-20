@@ -43,7 +43,10 @@ public class Game extends JFrame {
         JButton b2 = new JButton("Neustart");
         RestartHandler restartHandler = new RestartHandler(this); // Neuer ActionListener
         b2.addActionListener(restartHandler);
-        
+
+
+
+
 
 
         this.add(b1);

@@ -15,6 +15,7 @@ public class SteinAuswahlFenster extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
         int index = 0;
 
         this.add(label);
