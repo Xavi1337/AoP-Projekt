@@ -21,7 +21,7 @@ public class Game extends JFrame {
 
 
         setSize(1920, 1080);
-        setResizable(true);
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
