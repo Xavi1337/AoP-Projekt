@@ -15,19 +15,15 @@ public class Display extends JPanel{
 
     private final GameMap map;
 
-    //private final Player1 player1;
-    //private final Player2 player2;
-    //private final Player3 player3;
-    //private final Player4 player4;
+
     private final Color yellowboard = new Color(254, 241, 126);
 
     public Display() {
 
         map = new GameMap(50);
-        //player1 = new Player1(8.5, 12.5, 0.375);
-        //player2 = new Player2(7.5, 12.5, 0.375);
-        //player3 = new Player3(6.5, 12.5, 0.375);
-        //player4 = new Player4(5.5, 12.5, 0.375);
+
+
+
     }
 
     public void paint(Graphics g) {

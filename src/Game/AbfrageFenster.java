@@ -9,7 +9,6 @@ public class AbfrageFenster extends JFrame {
 
     public AbfrageFenster() {
         setTitle("Spieleranzahl");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
         setLocationRelativeTo(null);
 
