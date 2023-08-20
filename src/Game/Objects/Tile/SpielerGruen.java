@@ -11,6 +11,8 @@ public class SpielerGruen extends Tile {
         this.index = index;
     }
 
+
+
     public void render(Graphics2D g, int tileSize) {
         g.setColor(Color.green);
         g.fillOval(this.x * tileSize, this.y * tileSize, tileSize - 10, tileSize - 10);
@@ -20,7 +22,7 @@ public class SpielerGruen extends Tile {
         switch (index) {
             case 0:
                 g.setColor(Color.black);
-                g.fillOval(this.x * tileSize , this.y * tileSize, (tileSize -50) * this.x  , (tileSize - 50) * this.y);
+                g.fillOval(this.x * tileSize , this.y * tileSize, tileSize - 50, tileSize - 50);
                 break;
             case 1:
                 g.setColor(Color.white);
