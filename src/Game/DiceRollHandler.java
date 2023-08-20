@@ -20,14 +20,17 @@ class DiceRollHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        lastDiceRoll = rollDice();
-        spielablauf.checkDiceRoll(lastDiceRoll);
+
         if (spielablauf.getRunde()%4 >= teilnehmer) {
             while (spielablauf.getRunde() % 4 >= teilnehmer) {
                 lastDiceRoll = rollDice();
                 spielablauf.checkDiceRollKI(lastDiceRoll);
             }
+        } else {
+            lastDiceRoll = rollDice();
+            spielablauf.checkDiceRoll(lastDiceRoll);
         }
+
         SoundManager soundManager = new SoundManager();
         soundManager.loadSound("dice_roll.wav");
         soundManager.playSound();

@@ -14,7 +14,7 @@ public class Game extends JFrame {
 
 
     public Game(int teilnehmer) {
-        super("Game");
+        super("Mensch Aergere Dich Nicht!");
         display = new Display();
         this.add(display);
 
