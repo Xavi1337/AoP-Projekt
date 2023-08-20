@@ -35,9 +35,6 @@ public class Game extends JFrame {
         ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
         System.setOut(new PrintStream(consoleOutput));
         System.setErr(new PrintStream(consoleOutput));
-        
-        //System.out.println("Dies ist eine Konsolenausgabe.");
-        //System.err.println("Dies ist eine Fehlerausgabe.");
 
         JButton b1 = new JButton("Wuerfeln");
         DiceRollHandler rollHandler = new DiceRollHandler(display, teilnehmer);
@@ -46,15 +43,11 @@ public class Game extends JFrame {
         JButton b2 = new JButton("Neustart");
         RestartHandler restartHandler = new RestartHandler(this); // Neuer ActionListener
         b2.addActionListener(restartHandler);
+        
 
 
-        b1.setSize(20,20);
-        b2.setSize(20,20);
-
-
-
-        this.add(scrollPane);
         this.add(b1);
+        this.add(scrollPane);
         this.add(b2);
 
         this.revalidate();

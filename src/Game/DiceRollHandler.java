@@ -24,7 +24,6 @@ class DiceRollHandler implements ActionListener {
         spielablauf.checkDiceRoll(lastDiceRoll);
         if (spielablauf.getRunde()%4 >= teilnehmer) {
             while (spielablauf.getRunde() % 4 >= teilnehmer) {
-                System.out.println("Test");
                 lastDiceRoll = rollDice();
                 spielablauf.checkDiceRollKI(lastDiceRoll);
             }

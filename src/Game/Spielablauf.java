@@ -168,7 +168,7 @@ class Spielablauf  {
                 }
             } else {
 
-                zeigeSpielerPopup(String.valueOf(spielers[runde % 4]));
+                zeigeSpielerPopup();
                 spielers[runde % 4].setVersuche(0);
                 runde++;
             }
@@ -236,9 +236,9 @@ class Spielablauf  {
         return random.nextInt(spielers[runde % 4].getSteine().size()) ;
     }
 
-    public static void zeigeSpielerPopup(String spielerName) {
+    public static void zeigeSpielerPopup() {
         JFrame frame = new JFrame("Spielerwechsel");
-        JOptionPane.showMessageDialog(frame, "Naechster Spieler: " + spielerName, "Spielerwechsel", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, "Naechster Spieler ist an der Reihe", "Spielerwechsel", JOptionPane.INFORMATION_MESSAGE);
         frame.dispose();
     }
 

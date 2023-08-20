@@ -21,19 +21,19 @@ public class SpielerRot extends Tile {
         switch (index) {
             case 0:
                 g.setColor(Color.black);
-                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
+                g.fillOval(this.x * tileSize + 10, this.y * tileSize + 10, tileSize - 30, tileSize - 30);
                 break;
             case 1:
                 g.setColor(Color.gray);
-                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
+                g.fillOval(this.x * tileSize + 10, this.y * tileSize + 10, tileSize - 30, tileSize - 30);
                 break;
             case 2:
                 g.setColor(Color.lightGray);
-                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
+                g.fillOval(this.x * tileSize + 10, this.y * tileSize + 10, tileSize - 30, tileSize - 30);
                 break;
             case 3:
                 g.setColor(Color.white);
-                g.fillOval(this.x * tileSize + 20, this.y * tileSize + 20, tileSize - 50, tileSize - 50);
+                g.fillOval(this.x * tileSize + 10, this.y * tileSize + 10, tileSize - 30, tileSize - 30);
                 break;
         }
     }
