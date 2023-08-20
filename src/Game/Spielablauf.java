@@ -178,13 +178,13 @@ class Spielablauf  {
                 System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
                 spielzugStart(diceRoll);
             } else {
-                System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewürfelt!");
+                System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
                 new SteinAuswahlFenster(this, spielers, runde, diceRoll);
             }
         } else if (spielers[runde % 4].getSteine().size() == 4) {
 
             if (diceRoll == 6) {
-                System.out.println("Glückwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
+                System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
                 new SteinAuswahlFenster(this, spielers, runde, diceRoll);
             } else {
                 System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
