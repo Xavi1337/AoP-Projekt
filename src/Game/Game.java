@@ -21,9 +21,9 @@ public class Game extends JFrame {
         JScrollPane scrollPane = new JScrollPane(textArea);
         display.add(scrollPane);
 
-        /*ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
+        ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
         System.setOut(new PrintStream(consoleOutput));
-        System.setErr(new PrintStream(consoleOutput));*/
+        System.setErr(new PrintStream(consoleOutput));
         
         //System.out.println("Dies ist eine Konsolenausgabe.");
         //System.err.println("Dies ist eine Fehlerausgabe.");
