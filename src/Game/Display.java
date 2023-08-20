@@ -3,20 +3,16 @@ package Game;
 import java.awt.*;
 import javax.swing.*;
 
-public class Display extends JPanel{
+public class Display extends JPanel {
 
     public GameMap getMap() {
         return map;
     }
-
     private final GameMap map;
-
-
     private final Color yellowboard = new Color(254, 241, 126);
 
     public Display() {
-
-        map = new GameMap(48);
+        map = new GameMap(94);
     }
 
     public void paint(Graphics g) {
@@ -31,5 +27,4 @@ public class Display extends JPanel{
 
         map.render(g2, map.getTileSize());
     }
-
 }

@@ -4,13 +4,9 @@ import java.awt.Graphics2D;
 import Game.Objects.GameObject;
 import Game.Objects.Tile.*;
 
-public class GameMap extends GameObject{
+public class GameMap extends GameObject {
 
-    public int[][] getDEFAULT_MAP() {
-        return DEFAULT_MAP;
-    }
-
-    private final int[][] DEFAULT_MAP ={
+    private final int[][] DEFAULT_MAP = {
         {100, 100,   0,   0,   9,  10,  11,   0,   0, 102, 102},
         {100, 100,   0,   0,   8, 103,  12,   0,   0, 102, 102},
         {  0,   0,   0,   0,   7, 103,  13,   0,   0,   0,   0},
@@ -23,10 +19,7 @@ public class GameMap extends GameObject{
         {106, 106,   0,   0,  32, 107,  28,   0,   0, 104, 104},
         {106, 106,   0,   0,  31,  30,  29,   0,   0, 104, 104},
     };
-
     public final int tileSize;
-
-
     private Tile[][] tiles;
 
     public GameMap (int tileSize) {
@@ -63,16 +56,6 @@ public class GameMap extends GameObject{
 
     }
 
-    public int getWidth() {
-
-        return tiles[0].length;
-    }
-
-    public int getHeight() {
-
-        return tiles.length;
-    }
-
     @Override
     public void render(Graphics2D g, int tileSize) {
         for(Tile[] row : tiles) {
@@ -82,23 +65,14 @@ public class GameMap extends GameObject{
         }
     }
 
-    public int getTileSize() {
-
-        return tileSize;
-    }
-
+    public int getWidth() {return tiles[0].length;}
+    public int getHeight() {return tiles.length;}
+    public int getTileSize() {return tileSize;}
     public Tile[][] getTiles() {
         return tiles;
     }
-
-
-    public Tile getTile(int x, int y) {
-
-        return tiles[x][y];
-    }
-
+    public Tile getTile(int x, int y) {return tiles[x][y];}
     public void setTile(Tile tile) {
         tiles[tile.getX()][tile.getY()] = tile;
     }
 }
-
