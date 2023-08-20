@@ -16,14 +16,24 @@ public class Game extends JFrame {
         super("Game");
         display = new Display();
 
+        this.add(display);
+
+
+
+        setSize(1920, 1080);
+        setResizable(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
-        display.add(scrollPane);
 
-        /*ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
+
+        ConsoleOutputStream consoleOutput = new ConsoleOutputStream(textArea);
         System.setOut(new PrintStream(consoleOutput));
-        System.setErr(new PrintStream(consoleOutput));*/
+        System.setErr(new PrintStream(consoleOutput));
         
         //System.out.println("Dies ist eine Konsolenausgabe.");
         //System.err.println("Dies ist eine Fehlerausgabe.");
@@ -36,20 +46,21 @@ public class Game extends JFrame {
         RestartHandler restartHandler = new RestartHandler(this); // Neuer ActionListener
         b2.addActionListener(restartHandler);
 
-        b1.setSize(100, 100);
-        b1.setLocation(10,10);
 
+        b1.setSize(20,20);
+        b2.setSize(20,20);
+
+
+
+        display.add(scrollPane);
         display.add(b1);
         display.add(b2);
 
-        this.add(display);
+        display.revalidate();
+        display.repaint();
 
-        setSize(1920,1080);
-        setResizable(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        setLocationRelativeTo(null);
-        setVisible(true);
+
     }
 
     public static void main(String[] args) {

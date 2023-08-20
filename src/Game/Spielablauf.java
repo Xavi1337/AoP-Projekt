@@ -156,32 +156,32 @@ class Spielablauf  {
         if (spielers[runde % 4].getSteine().isEmpty()) {
             if (spielers[runde % 4].getVersuche() < 3) {
                 if (diceRoll == 6) {
-                    System.out.println("Glückwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
-                    System.out.println("Keine Spielsteine auf dem Feld.");
+                    System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
+
                     spielers[runde % 4].setVersuche(0);
                     spielzugStart(diceRoll);
                 } else {
-                    System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewürfelt!");
-                    System.out.println("Keine Spielsteine auf dem Feld.");
+                    System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewuerfelt!");
+
                     spielers[runde % 4].setVersuche(spielers[runde % 4].getVersuche() + 1);
                 }
             } else {
 
-                //zeigeSpielerPopup(String.valueOf(spielers[runde % 4]));
+                zeigeSpielerPopup(String.valueOf(spielers[runde % 4]));
                 spielers[runde % 4].setVersuche(0);
                 runde++;
             }
         } else if (spielers[runde % 4].getSteine().size() < 4) {
-            System.out.println("Spieler " + runde % 4 + " hat 1-3 Steine auf dem Spielfeld");
+
             if (diceRoll == 6) {
-                System.out.println("Glückwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
+                System.out.println("Glueckwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
                 spielzugStart(diceRoll);
             } else {
                 System.out.println("Spieler " + runde % 4 + " hat eine " + diceRoll + " gewürfelt!");
                 new SteinAuswahlFenster(this, spielers, runde, diceRoll);
             }
         } else if (spielers[runde % 4].getSteine().size() == 4) {
-            System.out.println("Spieler " + runde % 4 + " hat alle Steine auf dem Spielfeld");
+
             if (diceRoll == 6) {
                 System.out.println("Glückwunsch! Spieler " + runde % 4 + " hat eine 6 wurde geworfen.");
                 new SteinAuswahlFenster(this, spielers, runde, diceRoll);
@@ -194,7 +194,7 @@ class Spielablauf  {
 
     public static void zeigeSpielerPopup(String spielerName) {
         JFrame frame = new JFrame("Spielerwechsel");
-        JOptionPane.showMessageDialog(frame, "Nächster Spieler: " + spielerName, "Spielerwechsel", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, "Naechster Spieler: " + spielerName, "Spielerwechsel", JOptionPane.INFORMATION_MESSAGE);
         frame.dispose();
     }
 
